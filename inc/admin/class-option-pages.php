@@ -25,10 +25,10 @@ class Payment_Method_Setting_Page {
         $api_data = $_POST;
         $this->save_api_credentials( $api_data );
 
-        $api_url        = get_option('instamojo_payment_methods_endpoint', true ) ?? '';
-        $api_key        = get_option('instamojo_payment_methods_api_key', true ) ?? '';
-        $api_token      = get_option('instamojo_payment_methods_api_token', true ) ?? '';
-        $redirect_url   = get_option('instamojo_payment_methods_redirect_url', true ) ?? '';
+        $api_url        = get_option('instamojo_payment_methods_endpoint' ) ?? '';
+        $api_key        = get_option('instamojo_payment_methods_api_key' ) ?? '';
+        $api_token      = get_option('instamojo_payment_methods_api_token' ) ?? '';
+        $redirect_url   = get_option('instamojo_payment_methods_redirect_url' ) ?? '';
         
         ?>
         <div id="payment-credential" class="wrap"> 
