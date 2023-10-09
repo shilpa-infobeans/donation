@@ -13,12 +13,14 @@ Class Donation_Admin_Enques {
 	 */
     public function register_css_js_admin_script() {
 		wp_enqueue_script( 'donation_jquery',PLUGIN_DONATION_URL.'js/admin/jquery.min.js');
-		wp_enqueue_script( 'donation_datatable_js',PLUGIN_DONATION_URL.'js/admin/jquery.dataTables.min.js');
-		wp_enqueue_script( 'custom_jquery',PLUGIN_DONATION_URL.'js/admin/admin.js', array(), time(), false);
-		wp_localize_script( 'custom_jquery', 'global_object', array(
-			'ajaxurl' => admin_url('admin-ajax.php?action=donation_data_report'),
-		));
-		wp_enqueue_style( 'donation_datatable_css',PLUGIN_DONATION_URL.'css/admin/jquery.dataTables.min.css');
+		if (isset($_REQUEST['page']) && !empty($_REQUEST['page']) && $_REQUEST['page'] = 'donation_history_data') {
+			wp_enqueue_script( 'donation_datatable_js',PLUGIN_DONATION_URL.'js/admin/jquery.dataTables.min.js');
+			wp_enqueue_script( 'custom_jquery',PLUGIN_DONATION_URL.'js/admin/admin.js', array(), time(), false);
+			wp_localize_script( 'custom_jquery', 'global_object', array(
+				'ajaxurl' => admin_url('admin-ajax.php?action=donation_data_report'),
+			));
+			wp_enqueue_style( 'donation_datatable_css',PLUGIN_DONATION_URL.'css/admin/jquery.dataTables.min.css');
+		}
 		wp_enqueue_style( 'donation_admin_css',PLUGIN_DONATION_URL.'css/admin/admin.css');
 	}
 }
