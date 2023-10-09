@@ -155,8 +155,10 @@ class Donation_History_Report {
         $sql   = '';
         $sql   = $wpdb->prepare("SELECT * FROM {$table} ");
 
-        if ( $searchValue && !empty( $searchValue ) ) { 
-            $sql .=  " WHERE donator_name = '$searchValue' OR donator_email = '$searchValue'";
+        
+        //echo strlen($searchValue);        die($searchValue);
+        if ( $searchValue && !empty( $searchValue ) && $searchValue >= 3) { 
+            $sql .=  " WHERE donator_name LIKE '$searchValue%' OR donator_email LIKE '$searchValue%'";
         }
 
         if ( $columnName && !empty( $columnName )  ) { 
